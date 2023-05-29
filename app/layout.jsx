@@ -1,5 +1,5 @@
 import { Poppins } from 'next/font/google';
-import './globals.css';
+import '../public/styles/globals.css';
 import Header from './componets/Header';
 
 const poppins = Poppins({
@@ -8,8 +8,8 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'Traversy Media',
-  description: 'Web development tutorials and courses',
+  title: 'Name Distance',
+  description: 'aStar algorithm',
   keywords:
     'web development, web design, javascript, react, node, angular, vue, html, css',
 };
