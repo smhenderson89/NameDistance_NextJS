@@ -1,6 +1,6 @@
 'use client'; // Client component
 
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import Image from 'next/image';
 import qwerty from '../../public/images/qwertyKeyboard.png';
 import ortho from '../../public/images/orthoKeyboard.png';
@@ -9,43 +9,61 @@ import dvorak from '../../public/images/dvorak_layout.png';
 const InputForm = () => {
     // const [likes, setLikes] = React.useState(0);
 
+    const kbObject = {
+        "qwerty" : {qwerty},
+        "ortho" : {ortho},
+        "dvork" : {dvorak}
+    }
     // https://www.positronx.io/react-select-dropdown-onchange-event-handler-tutorial/
-    const [imgSrc, setImgSrc] = React.useState("qwerty");
-    const onChange = (event) => {
-        console.log('change happened');
-        console.log(event.target.value)
-        // setImgSrc(value);
-        // console.log(setImgSrc.value);
+    // const [imgSrc, setImgSrc] = useState({qwerty}); // Change keyboard image
+    const [typedName, setTypedName] = useState('') // Update inputName
+    // console.log(imgSrc);
+
+
+    // const onChange = (event) => {
+    //     let keyboardName = event.target.value;
+    //     console.log(`value: ${keyboardName}`);
+    //     console.log(`src: ${kbObject[keyboardName].src}`);
+
+
+    //     setImgSrc(kbObject[selectedOption])
+    //     // Change image source
+        
+    // }
+
+    const nameChange = event => {
+        setTypedName(event.target.value)
     }
 
-
-    function handleSubmit() {
-        console.log("button clicked!")
+    const handleSubmit = event => {
+        event.preventDefault();
+        // value of input field
+        console.log('handleSubmit', typedName)
     }
 
     return (
         <div>
-            <form className = "searchBar" select onChange={onChange}>
-                <label for="input name">Enter a Name</label>
-                <input type = "text" id = "inputName" name = "inputName" placeholder="George"  />
-                <br></br>
-                <label for="Keyboard Layout">Choose a Keyboard</label>
-                <select class = "keyboard" name = "keyboard" id = "keyboard">
-                    <option value = "qwerty" selected>QWERTY</option>
-                    <option value = "ortho">ORTHOLINEAR</option>
-                    <option value = "dvorak">DVORAK</option>
-                </select>
-            </form>
+            <label htmlFor="input name">Enter a Name</label>
+            <input type = "text" id = "inputName" onChange = {nameChange} name = "inputName" placeholder="George" value = {typedName}/>
+            <button onClick={handleSubmit}>Submit</button>
+            <br></br>
+            {/* <label htmlFor="Keyboard Layout">Choose a Keyboard</label>
+            <select className = "keyboard" id = "keyboard">
+                <option value = "qwerty" defaultValue>QWERTY</option>
+                <option value = "ortho">ORTHOLINEAR</option>
+                <option value = "dvorak">DVORAK</option>
+            </select> */}
+            <br></br>
             <Image 
                 alt = "keyboard image"
-                class = "img"
+                className = "img"
                 id = "keyboardImage"
                 width = {500}
                 height = {170}
                 src = {qwerty}
             />
             <br></br>
-            <button onClick={handleSubmit}>Submit</button>
+
         </div>
     )
 }
