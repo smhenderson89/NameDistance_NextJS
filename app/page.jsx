@@ -1,4 +1,5 @@
 import InputForm from "./componets/InputForm";
+import Results from "./componets/Results";
 
 
 export default function Home() {

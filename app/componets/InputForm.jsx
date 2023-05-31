@@ -8,9 +8,13 @@ import dvorak from '../../public/images/dvorak_layout.png';
 
 // Modules
 import nameDistance from '@/modules/nameDistance.mjs';
+import Results from './Results';
 
 const InputForm = () => {
+    let data = '';
     const [typedName, setTypedName] = useState('') // Update inputName
+    const [nameInfo, setNameInfo] = useState('') // Update name information from modules
+    const [show, setShow] = useState(false) // Show Results information
 
     // const [likes, setLikes] = React.useState(0);
 
@@ -47,14 +51,25 @@ const InputForm = () => {
         
         // Get JSON object for nameDistance
         let nameObject = nameDistance(typedName, 'qwerty')
-        console.log(nameObject)
+        console.log(nameObject);
+        setNameInfo(nameObject);
+        transformData(nameInfo);
+    }
+
+    function transformData(data) {
+        if (data.length > 0) {
+            console.log('returnResults hit');
+            setShow(true)
+        } else {
+            setShow(false)
+        }
     }
 
     return (
         <div>
             <label htmlFor="input name">Enter a Name</label>
-            <input type = "text" id = "inputName" onChange = {nameChange} defaultValue = "George" value = {typedName}/>
-            <button onClick={handleSubmit}>Submit</button>
+            <input type = "text" id = "inputName" onChange = {nameChange}  value = {typedName}/>
+            <button type = "button" onClick={handleSubmit}>Submit</button>
             <br></br>
             {/* <label htmlFor="Keyboard Layout">Choose a Keyboard</label>
             <select className = "keyboard" id = "keyboard">
@@ -73,6 +88,9 @@ const InputForm = () => {
             />
             <br></br> */}
 
+            <h3>Info Here: </h3>
+            {/* Pass NameDsitance information to Results Componet */} 
+            <Results {...nameInfo} /> 
         </div>
     )
 }
