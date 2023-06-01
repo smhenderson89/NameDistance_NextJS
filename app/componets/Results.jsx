@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Results = (props) => {
-    const headers = ['Start Letter', "End Letter", "Keyboard Path", "Distance"]
-
+    const headers = ['Start Letter', "End Letter", "Keyboard Path", "Distance"];
     if (props.length > 0) {
         console.log(props.length);
     } 
+
     
     return (
         <div>
