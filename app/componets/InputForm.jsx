@@ -11,10 +11,11 @@ import nameDistance from '@/modules/nameDistance.mjs';
 import Results from './Results';
 
 const InputForm = () => {
-    let data = '';
     const [typedName, setTypedName] = useState('') // Update inputName
-    const [nameInfo, setNameInfo] = useState('') // Update name information from modules
-    const [show, setShow] = useState(false) // Show Results information
+    const [nameInfo, setNameInfo] = useState(false) // Update name information from modules
+    const [show, setShow] = useState(false) // Show results from search 
+
+    // const [show, setShow] = useState(false) // Show Results information
 
     // const [likes, setLikes] = React.useState(0);
 
@@ -53,16 +54,7 @@ const InputForm = () => {
         let nameObject = nameDistance(typedName, 'qwerty')
         console.log(nameObject);
         setNameInfo(nameObject);
-        transformData(nameInfo);
-    }
-
-    function transformData(data) {
-        if (data.length > 0) {
-            console.log('returnResults hit');
-            setShow(true)
-        } else {
-            setShow(false)
-        }
+        setShow(true)
     }
 
     return (
@@ -90,7 +82,7 @@ const InputForm = () => {
 
             <h3>Info Here: </h3>
             {/* Pass NameDsitance information to Results Componet */} 
-            <Results {...nameInfo} /> 
+            <Results data = {...nameInfo} showInfo = {show} /> 
         </div>
     )
 }
