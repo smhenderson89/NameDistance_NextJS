@@ -1,5 +1,6 @@
-import InputForm from "./componets/InputForm";
-import Results from "./componets/Results";
+import InputForm from "./components/InputForm";
+import Results from "./components/Results";
+import 'bootstrap/dist/css/bootstrap.css'; // Add this line
 
 
 export default function Home() {
