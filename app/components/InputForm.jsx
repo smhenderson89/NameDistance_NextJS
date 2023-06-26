@@ -1,6 +1,6 @@
 'use client'; // Client component
 
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import Image from 'next/image';
 import qwerty from '../../public/images/qwertyKeyboard.png';
 import ortho from '../../public/images/orthoKeyboard.png';
@@ -13,6 +13,7 @@ import Results from './Results';
 const InputForm = () => {
     const [typedName, setTypedName] = useState('') // Update inputName
     const [nameInfo, setNameInfo] = useState(false) // Update name information from modules
+    const [submitState, setSubmitState] = useState(false) // Update if user has submitted button
     const [show, setShow] = useState(false) // Show results from search 
 
     // const [show, setShow] = useState(false) // Show Results information
@@ -41,21 +42,29 @@ const InputForm = () => {
 
     const nameChange = event => {
         let partialName = event.target.value;
-        console.log(partialName);
+        // console.log(partialName);
         setTypedName(partialName)
     }
-
-    const handleSubmit = event => {
+    
+    const handleSubmit = event => { 
         event.preventDefault();
         // value of input field
         console.log('handleSubmit', typedName)
+        setSubmitState(true)
         
+
+    }
+
+    useEffect(() => {
+        if (submitState != '') {
         // Get JSON object for nameDistance
         let nameObject = nameDistance(typedName, 'qwerty')
         console.log(nameObject);
-        setNameInfo(nameObject);
-        setShow(true)
-    }
+        setNameInfo(nameObject); // update child component
+        setShow(true) 
+        setSubmitState(false) // prevent endless loop function
+        }
+    }, [submitState, nameInfo, typedName])
 
     return (
         <div>
@@ -82,7 +91,9 @@ const InputForm = () => {
 
             <h3>Info Here: </h3>
             {/* Pass NameDsitance information to Results Componet */} 
-            <Results data = {...nameInfo} showInfo = {show} /> 
+            <Results 
+                data = {nameInfo} 
+                showInfo = {show} /> 
         </div>
     )
 }

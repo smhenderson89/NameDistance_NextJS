@@ -22,6 +22,7 @@ function nameDistance (name, keyboard) {
         distanceArray = Astar(startLetter, endLetter, keyboard)
         totalDistance += distanceArray[0]
         distanceObject.push({
+            "id" : i,
             "start" : startLetter,
             "end" : endLetter,
             "distance" : distanceArray[0],

@@ -1,6 +1,6 @@
 'use client'; // Client component
 
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 
 // Results will show Name Distance information based on user input for name
 function Results({data, showInfo}) {    
@@ -9,28 +9,28 @@ function Results({data, showInfo}) {
     } else {
         // Create table headers
         const headers = ['Start Letter', "End Letter", "Keyboard Path", "Distance"];
-        let headersList = headers.map((item, index) => {
+        const headersList = headers.map((item, index) => {
             return <th scope = "col" key = {index}>{item}</th>
         })
 
         // Create data information
         let pathInfo = data.slice(1, -1); // slice off first and last element of object
-        console.log(`pathInfo`);
-        console.log(pathInfo);
+        // console.log(`pathInfo`);
+        // console.log(pathInfo);
         
-        // let pathData = ''
+        let pathData = pathInfo.map(item => 
+                <tr key = {item.id}>
+                    <th scope = "row">{item['start']}</th>
+                    <td>{item['end']}</td>
+                    <td>{item['path']}</td>
+                    <td>{item['distance']}</td>
+                </tr>
+        )}
 
-        // for (var i in pathData) {
-        //     pathData.push(
-        //         <tr>
-        //             <th scope = "row">{pathData[i]['start']}</th>
-        //             <td>{pathInfo[i]['end']}</td>
-        //             <td>{pathInfo[i]['path']}</td>
-        //             <td>{pathInfo[i]['distance']}</td>
-        //         </tr>
-        // )}
+        // console.log('formatted information')
+        // console.log(pathData)
 
-        console.log('result Table hit')
+        // console.log('result Table hit')
         let name = data[0]['name'];
 
         let distanceTraveled = data[(data.length - 1)]['totalDistance'];
@@ -38,7 +38,7 @@ function Results({data, showInfo}) {
         return (
             <div>
                 <div className='container'>
-                    <div>Search for name: {name} </div>
+                    <div>Searched name: {name} </div>
                     <div>Distance traveled: {distanceTraveled} </div>
                     <table className = "table">
                         <thead>
@@ -47,19 +47,11 @@ function Results({data, showInfo}) {
                             </tr>
                         </thead>
                         <tbody>
-                            { pathInfo.forEach(item => 
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>1st</td>
-                                <td>2nd</td>
-                                <td>3rd</td>
-                            </tr>
-                          )}
+                            {/* {pathData} */}
                         </tbody>
                     </table>
                 </div>
             </div>
         )}
-    }
 
 export default Results
