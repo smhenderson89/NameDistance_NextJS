@@ -15,6 +15,8 @@ const InputForm = () => {
     const [nameInfo, setNameInfo] = useState(false) // Update name information from modules
     const [submitState, setSubmitState] = useState(false) // Update if user has submitted button
     const [show, setShow] = useState(false) // Show results from search 
+    const [headers, setHeaders] = useState(false)
+    const [pathData, setPathData] = useState(false)
 
     // const [show, setShow] = useState(false) // Show Results information
 
@@ -51,8 +53,28 @@ const InputForm = () => {
         // value of input field
         console.log('handleSubmit', typedName)
         setSubmitState(true)
-        
+    }
 
+    function changeHeaders() {
+        const headers = ['Start Letter', "End Letter", "Keyboard Path", "Distance"];
+        const headersList = headers.map((item, index) => {
+            return <th scope = "col" key = {index}>{item}</th>
+        })
+        console.log('change headers hit');
+        setHeaders(headersList)
+    }
+
+    function pathInfo (data) { // pre-sort name information
+        let pathInfo = data.slice(1, -1);
+        let pathData = pathInfo.map(item => 
+        <tr key = {item.id}>
+            <th scope = "row">{item['start']}</th>
+            <td>{item['end']}</td>
+            <td>{item['path']}</td>
+            <td>{item['distance']}</td>
+        </tr>)
+        console.log('path Data function hit')
+        setPathData(pathData)
     }
 
     useEffect(() => {
@@ -60,6 +82,8 @@ const InputForm = () => {
         // Get JSON object for nameDistance
         let nameObject = nameDistance(typedName, 'qwerty')
         console.log(nameObject);
+        changeHeaders()
+        pathInfo(nameObject)
         setNameInfo(nameObject); // update child component
         setShow(true) 
         setSubmitState(false) // prevent endless loop function
@@ -88,11 +112,12 @@ const InputForm = () => {
                 src = {qwerty}
             />
             <br></br> */}
-
-            <h3>Info Here: </h3>
+            <br></br>
+            <h5>Info Here: </h5>
             {/* Pass NameDsitance information to Results Componet */} 
             <Results 
-                data = {nameInfo} 
+                pathData = {pathData}
+                headers = {headers} 
                 showInfo = {show} /> 
         </div>
     )
