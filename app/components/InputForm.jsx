@@ -70,7 +70,7 @@ const InputForm = () => {
         <tr key = {item.id}>
             <th scope = "row">{item['start']}</th>
             <td>{item['end']}</td>
-            <td>{item['path']}</td>
+            <td>{item['arrowPath']}</td>
             <td>{item['distance']}</td>
         </tr>)
         console.log('path Data function hit')

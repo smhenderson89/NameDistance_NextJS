@@ -16,17 +16,37 @@ function nameDistance (name, keyboard) {
     let totalDistance = 0;
     let distanceArray = []
     let distanceObject = [{"name" : name}]
+
     for (let i = 0; i < nameArray.length; i++) {
         let startLetter = nameArray[i][0]
         let endLetter = nameArray[i][1]
         distanceArray = Astar(startLetter, endLetter, keyboard)
+
+        // Create Arrow Path (i.e. "A -> B -> " from path array)
+        let arrowPath = "";
+        let charPath = distanceArray[1]
+        let pathLength = charPath.length;
+        if (pathLength > 1) {
+            for (let k = 0; k < pathLength; k++) {
+                if (k < (pathLength -1) ) {
+                arrowPath += charPath[k]
+                arrowPath += "→"
+                } else {
+                    arrowPath += charPath[k]
+                }
+            }
+        } else { // If starting and ending on same letter
+            arrowPath = "N/A"
+        }
+
         totalDistance += distanceArray[0]
         distanceObject.push({
             "id" : i,
             "start" : startLetter,
             "end" : endLetter,
             "distance" : distanceArray[0],
-            "path" : distanceArray[1] 
+            "path" : distanceArray[1],
+            "arrowPath" : arrowPath
         })
     }
     distanceObject.push({"totalDistance" : totalDistance})
