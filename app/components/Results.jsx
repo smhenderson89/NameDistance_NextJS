@@ -3,7 +3,7 @@
 // import React from 'react'
 
 // Results will show Name Distance information based on user input for name
-function Results({pathData, headers, showInfo}) {    
+function Results({pathData, headers}) {    
     if (pathData == false) { // if results have been sent
         return (<div>Pending Search</div>)
     } else {

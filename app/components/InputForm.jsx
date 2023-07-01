@@ -14,13 +14,11 @@ const InputForm = () => {
     const [typedName, setTypedName] = useState('') // Update inputName
     const [nameInfo, setNameInfo] = useState(false) // Update name information from modules
     const [submitState, setSubmitState] = useState(false) // Update if user has submitted button
-    const [show, setShow] = useState(false) // Show results from search 
+    // const [show, setShow] = useState(false) // Show results from search 
     const [headers, setHeaders] = useState(false)
     const [pathData, setPathData] = useState(false)
 
     // const [show, setShow] = useState(false) // Show Results information
-
-    // const [likes, setLikes] = React.useState(0);
 
     // const kbObject = {
     //     "qwerty" : {qwerty},
@@ -32,11 +30,17 @@ const InputForm = () => {
     // console.log(imgSrc);
 
     /* Detect changes for dropdown menu */
-    const onChange = (event) => {
-        let keyboardName = event.target.value;
-        console.log(`value: ${keyboardName}`);
-        console.log(`src: ${kbObject[keyboardName].src}`);
-    }
+    // document.getElementsByTagName('select')[0].onchange = () => {
+    //     var index = this.selectIndex;
+    //     var inputText = this.children[index].innerHTML.trim()
+    //     console.log(inputText)
+    // }
+    
+    // const onChange = (event) => {
+    //     let keyboardName = event.target.value;
+    //     console.log(`value: ${keyboardName}`);
+    //     console.log(`src: ${kbObject[keyboardName].src}`);
+    // }
 
 
     //     setImgSrc(kbObject[selectedOption])
@@ -87,7 +91,7 @@ const InputForm = () => {
         changeHeaders()
         pathInfo(nameObject)
         setNameInfo(nameObject); // update child component
-        setShow(true) 
+        // setShow(true) 
         setSubmitState(false) // prevent endless loop function
         }
     }, [submitState, nameInfo, typedName])
@@ -99,7 +103,7 @@ const InputForm = () => {
             <button type = "button" onClick={handleSubmit}>Submit</button>
             <br></br>
             <label htmlFor="Keyboard Layout">Choose a Keyboard</label>
-            <select className = "keyboard" id = "keyboard">
+            <select className = "keyboard" id = "keyboardLayout">
                 <option value = "qwerty" defaultValue>QWERTY</option>
                 <option value = "ortho">ORTHOLINEAR</option>
                 <option value = "dvorak">DVORAK</option>
@@ -120,7 +124,7 @@ const InputForm = () => {
             <Results 
                 pathData = {pathData}
                 headers = {headers} 
-                showInfo = {show} /> 
+                /> 
         </div>
     )
 }
