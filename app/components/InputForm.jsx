@@ -31,10 +31,12 @@ const InputForm = () => {
     // const [imgSrc, setImgSrc] = useState({qwerty}); // Change keyboard image
     // console.log(imgSrc);
 
-    // const onChange = (event) => {
-    //     let keyboardName = event.target.value;
-    //     console.log(`value: ${keyboardName}`);
-    //     console.log(`src: ${kbObject[keyboardName].src}`);
+    /* Detect changes for dropdown menu */
+    const onChange = (event) => {
+        let keyboardName = event.target.value;
+        console.log(`value: ${keyboardName}`);
+        console.log(`src: ${kbObject[keyboardName].src}`);
+    }
 
 
     //     setImgSrc(kbObject[selectedOption])
@@ -96,12 +98,12 @@ const InputForm = () => {
             <input type = "text" id = "inputName" onChange = {nameChange}  value = {typedName}/>
             <button type = "button" onClick={handleSubmit}>Submit</button>
             <br></br>
-            {/* <label htmlFor="Keyboard Layout">Choose a Keyboard</label>
+            <label htmlFor="Keyboard Layout">Choose a Keyboard</label>
             <select className = "keyboard" id = "keyboard">
                 <option value = "qwerty" defaultValue>QWERTY</option>
                 <option value = "ortho">ORTHOLINEAR</option>
                 <option value = "dvorak">DVORAK</option>
-            </select> */}
+            </select>
             {/* <br></br>
             <Image 
                 alt = "keyboard image"
