@@ -18,7 +18,7 @@ function keyImage(option) {
             src = {qwerty}
         />
         )
-    } else if (imageSrc != "ortho") {
+    } else if (imageSrc == "ortho") {
         console.log(imageSrc);
         return (
             <Image 
