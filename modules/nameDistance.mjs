@@ -3,7 +3,7 @@ LOGIC
 
 Use sliceName.js to determine intial list of characters for names
 Use Astar.js file to determine distance travaled for each letter between names
-Return the sum total of those distances as a final value
+Return as an object to be used by InputForm.jsx to pass to Results.jsx to display to user
 
 */
 
@@ -15,7 +15,7 @@ function nameDistance (name, keyboard) {
     let nameArray = sliceName(name)
     let totalDistance = 0;
     let distanceArray = []
-    let distanceObject = [{"name" : name}]
+    let distanceObject = [{"name" : name}, {"keyboard" : keyboard}]
 
     for (let i = 0; i < nameArray.length; i++) {
         let startLetter = nameArray[i][0]

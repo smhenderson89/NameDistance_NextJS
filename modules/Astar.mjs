@@ -71,7 +71,7 @@ export function Astar(start, end, board) {
         //push startNode onto openList
         openList.push(startNode)
 
-        while (openList.length > 0 && whileLoops != 15) { // while end point has not been found, or loops exceed 15
+        while (openList.length > 0 && whileLoops != 15) { // while end point has not been found, or loops exceed 15 to prevent infinite loops
             //currentNode = find lowest f in openList, OR the End location!
             //Grab lowest f(x) to process next
             let lowestIndex = 0
@@ -88,7 +88,7 @@ export function Astar(start, end, board) {
                 // console.log(`Length of travel: ${distance}`) ; // Distance between lengths
 
                 // console.log(`${distance}, ${letterPath}`);
-                return [distance, letterPath]
+                return [distance, letterPath] // Return information to Name Distance
             } else { // Continue with aglorithim
                 if (openList.length > 1) {
                     for (let i = 0; i < openList.length; i++) {
