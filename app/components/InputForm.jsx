@@ -18,17 +18,15 @@ const InputForm = () => {
     const [headers, setHeaders] = useState(false)
     const [pathData, setPathData] = useState(false)
     const [keyImage, setKeyImage] = useState("qwerty")
+    const [resultInfo, setResultsInfo] = useState({});
     
     const keyboardOption = (event) => {
         let keyboardSelect = event.target.value;
-        console.log(`value: ${keyboardSelect}`);
-        console.log('changing image source');
         setKeyImage(keyboardSelect); // update keyboard Image
     }
 
     const nameChange = event => {
         let partialName = event.target.value;
-        // console.log(partialName);
         setTypedName(partialName)
     }
     
@@ -39,17 +37,26 @@ const InputForm = () => {
         setSubmitState(true)
     }
 
+    /* Create headers for Results child component, pass to information 
+    
+    */
     function changeHeaders() {
         const headers = ['Start Letter', "End Letter", "Keyboard Path", "Distance"];
         const headersList = headers.map((item, index) => {
             return <th scope = "col" key = {index}>{item}</th>
         })
-        // console.log('change headers hit');
+
         setHeaders(headersList)
     }
 
-    function pathInfo (data) { // pre-sort name information
-        let pathInfo = data.slice(1, -1);
+    /* Filter out path information for results table, 
+    set State for Results child componet */
+    function pathInfo (data) { 
+        let results = {"name": data[0]['name'], "keyboard": data[1]['keyboard'], "distance": data[data.length-1]['totalDistance']}
+        setResultsInfo(results)
+        
+        // Filter out information for name path
+        let pathInfo = data.slice(2, -1);
         let pathData = pathInfo.map(item => 
         <tr key = {item.id}>
             <th scope = "row">{item['start']}</th>
@@ -57,15 +64,15 @@ const InputForm = () => {
             <td>{item['arrowPath']}</td>
             <td>{item['distance']}</td>
         </tr>)
-        // console.log('path Data function hit')
         setPathData(pathData)
+
     }
 
     useEffect(() => {
         if (submitState != '') {
         // Get JSON object for nameDistance
         let nameObject = nameDistance(typedName, 'qwerty')
-        console.log(nameObject);
+        // console.log(nameObject);
         changeHeaders()
         pathInfo(nameObject)
         setNameInfo(nameObject); // update child component
@@ -91,11 +98,11 @@ const InputForm = () => {
             <KeyImage image = {keyImage} />
             <br></br>
             <br></br>
-            <h5>Info Here: </h5>
             {/* Pass NameDsitance information to Results Componet */} 
             <Results 
                 pathData = {pathData}
-                headers = {headers} 
+                headers = {headers}
+                results = {resultInfo} 
                 /> 
         </div>
     )
