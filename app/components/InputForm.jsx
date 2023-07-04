@@ -2,14 +2,14 @@
 
 import React, {useState, useRef, useEffect} from 'react';
 import Image from 'next/image';
-import qwerty from '../../public/images/qwertyKeyboard.png';
-import ortho from '../../public/images/orthoKeyboard.png';
-import dvorak from '../../public/images/dvorak_layout.png';
 
 
 // Modules
 import nameDistance from '@/modules/nameDistance.mjs';
+
+// Child Components
 import Results from './Results';
+import KeyImage from './KeyImage';
 
 const InputForm = () => {
     const [typedName, setTypedName] = useState('') // Update inputName
@@ -17,30 +17,14 @@ const InputForm = () => {
     const [submitState, setSubmitState] = useState(false) // Update if user has submitted button
     const [headers, setHeaders] = useState(false)
     const [pathData, setPathData] = useState(false)
-    const [keyImage, setKeyImage] = useState({qwerty})
-
-    // https://www.positronx.io/react-select-dropdown-onchange-event-handler-tutorial/
-    // const [imgSrc, setImgSrc] = useState({qwerty}); // Change keyboard image
-    // console.log(imgSrc);
-
-    const kbObject = {
-        "qwerty" : {qwerty},
-        "ortho" : {ortho},
-        "dvorak" : {dvorak}
-    }
+    const [keyImage, setKeyImage] = useState("qwerty")
     
     const keyboardOption = (event) => {
-        let keyboardName = event.target.value;
-        console.log(`value: ${keyboardName}`);
-        let keySrc = kbObject[keyboardName]
-        console.log('changing image source')
-        setKeyImage(kbObject[keyboardName]);
+        let keyboardSelect = event.target.value;
+        console.log(`value: ${keyboardSelect}`);
+        console.log('changing image source');
+        setKeyImage(keyboardSelect); // update keyboard Image
     }
-
-    //     setImgSrc(kbObject[selectedOption])
-    //     // Change image source
-        
-    // }
 
     const nameChange = event => {
         let partialName = event.target.value;
@@ -103,14 +87,8 @@ const InputForm = () => {
                 <option value = "dvorak">DVORAK</option>
             </select>
             <br></br>
-            <Image 
-                alt = "keyboard image"
-                className = "img"
-                id = "keyboardImage"
-                width = {500}
-                height = {170}
-                src = {keyImage}
-            />
+            <br></br>
+            <KeyImage image = {keyImage} />
             <br></br>
             <br></br>
             <h5>Info Here: </h5>

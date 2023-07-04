@@ -11,6 +11,8 @@ function Results({pathData, headers}) {
         return (
             <div>
                 <div className='container'>
+                    <div>Name Searched: Name </div>
+                    <div>Keyboard Used: Keyboard </div>
                     {/* <div>Searched name: {name} </div>
                     <div>Distance traveled: {distanceTraveled} </div> */}
                     <table className = "table table-striped">
@@ -21,6 +23,11 @@ function Results({pathData, headers}) {
                         </thead>
                         <tbody>
                             {pathData}
+                            <tr>
+                                <th scope = "row"></th>
+                                <td colSpan= "2" id = "totalDistanceID">Total Distance</td>
+                                <td>Distance</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
