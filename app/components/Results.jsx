@@ -5,7 +5,7 @@
 // Results will show Name Distance information based on user input for name
 function Results({pathData, headers, results}) {
     if (pathData == false) { // if results have been sent
-        return (<div>Pending Search</div>)
+        return (<div>Awaiting Search</div>)
     } else {
         // console.log(results);    
         return (
