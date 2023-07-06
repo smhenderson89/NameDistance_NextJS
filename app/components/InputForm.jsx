@@ -3,7 +3,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import Image from 'next/image';
 
-
 // Modules
 import nameDistance from '@/modules/nameDistance.mjs';
 
@@ -20,26 +19,26 @@ const InputForm = () => {
     const [keyImage, setKeyImage] = useState("qwerty")
     const [resultInfo, setResultsInfo] = useState({});
     
+    // Update Keyboard image based on drop down selection
     const keyboardOption = (event) => {
         let keyboardSelect = event.target.value;
         setKeyImage(keyboardSelect); // update keyboard Image
     }
 
+    // Update Type named based on when name is entered into the field
     const nameChange = event => {
         let partialName = event.target.value;
         setTypedName(partialName)
     }
     
+    // Update state when form is submitted
     const handleSubmit = event => { 
         event.preventDefault();
-        // value of input field
-        // console.log('handleSubmit', typedName)
         setSubmitState(true)
     }
 
-    /* Create headers for Results child component, pass to information 
-    
-    */
+    /* Create headers for Results child component, pass to information to 
+    Results componet */
     function changeHeaders() {
         const headers = ['Start Letter', "End Letter", "Keyboard Path", "Distance"];
         const headersList = headers.map((item, index) => {
@@ -52,7 +51,10 @@ const InputForm = () => {
     /* Filter out path information for results table, 
     set State for Results child componet */
     function pathInfo (data) { 
-        let results = {"name": data[0]['name'], "keyboard": data[1]['keyboard'], "distance": data[data.length-1]['totalDistance']}
+        let results = {
+            "name": data[0]['name'], 
+            "keyboard": data[1]['keyboard'], 
+            "distance": data[data.length-1]['totalDistance']}
         setResultsInfo(results)
         
         // Filter out information for name path
@@ -68,18 +70,17 @@ const InputForm = () => {
 
     }
 
+    /* UseEffect -> Run program request once forum is submitted, pass information to Results component*/
     useEffect(() => {
         if (submitState != '') {
-        // Get JSON object for nameDistance
-        let nameObject = nameDistance(typedName, 'qwerty')
-        // console.log(nameObject);
+        let nameObject = nameDistance(typedName, keyImage)
         changeHeaders()
         pathInfo(nameObject)
         setNameInfo(nameObject); // update child component
         // setShow(true) 
         setSubmitState(false) // prevent endless loop function
         }
-    }, [submitState, nameInfo, typedName])
+    }, [submitState, nameInfo, typedName, keyImage])
 
     return (
         <div>
