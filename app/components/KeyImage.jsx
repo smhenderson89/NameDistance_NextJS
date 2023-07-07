@@ -15,11 +15,11 @@ function keyImage(option) {
             id = "keyboardImage"
             width = {500}
             height = {170}
+            priority = {true}
             src = {qwerty}
         />
         )
     } else if (imageSrc == "ortho") {
-        console.log(imageSrc);
         return (
             <Image 
                 alt = "qwerty keyboard image"
@@ -27,6 +27,7 @@ function keyImage(option) {
                 id = "keyboardImage"
                 width = {500}
                 height = {170}
+                priority = {false}
                 src = {ortho}
             />  
         )
@@ -38,6 +39,7 @@ function keyImage(option) {
             id = "keyboardImage"
             width = {500}
             height = {170}
+            priority = {false}
             src = {dvorak}
         />  
         )

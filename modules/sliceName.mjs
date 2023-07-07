@@ -17,15 +17,15 @@ export function sliceName(input) {
             // Use Regular expression to check start and end letter if both are characters
             if (/^[a-zA-Z]+$/.test(name[i]) && (/^[a-zA-Z]+$/.test(name[i+1]))) {
                 // console.log(`${name[i]} & ${name[i+1]} are characters`)
-                letterArray[i] = [name[i], name[i+1]]
-            } else {
-                console.log(`No, ${name[i]} is not a character`);
+                letterArray.push([name[i], name[i+1]])
+            } else { // if not valid letter for start and finish
+                // letterArray[i] = [null, null]
             }
         }
     } else {
-        console.log("name length negative? how did you get this error");
+        console.log("Error Code #002 - Negative Name Length");
     }
-    // console.log(letterArray);
+    // console.log(JSON.stringify(letterArray));
     return letterArray
 }
 
@@ -37,4 +37,3 @@ sliceName(test)
 // exports.sliceName = sliceName;
 
 */
-
