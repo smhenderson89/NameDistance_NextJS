@@ -59,8 +59,6 @@ function nameDistance (name, keyboard) {
 
 // Test: nameDistance('supercalifragilisticexpialidocious', 'dvorak')
 
-nameDistance('ann-lee', 'qwerty')
-
 export default nameDistance
 
 
