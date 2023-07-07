@@ -16,9 +16,10 @@ export function Astar(start, end, board) {
     // verify start & end are letters
     if (typeof start == 'string' && typeof end == 'string') {
         // console.log('start & end are letters')
+    } else if (start == null && end == null) {
+        return [0, []]
     } else {
-        // console.log('not valid letters')
-        return 1
+        return console.log('error code #001')
     }
 
     // Change constants depending on keyboard

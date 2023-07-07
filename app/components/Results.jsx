@@ -6,15 +6,12 @@
 function Results({pathData, headers, results}) {
     if (pathData == false) { // if results have been sent
         return (<div>Awaiting Search</div>)
-    } else {
-        // console.log(results);    
+    } else {   
         return (
             <div>
                 <div className='container'>
                     <div>Name Searched: {results.name}</div>
                     <div>Keyboard Used: {results.keyboard} </div>
-                    {/* <div>Searched name: {name} </div>
-                    <div>Distance traveled: {distanceTraveled} </div> */}
                     <table className = "table table-striped">
                         <thead>
                             <tr>
