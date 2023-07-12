@@ -31,8 +31,6 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## Project Inspiration
 
