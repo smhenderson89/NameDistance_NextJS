@@ -1,21 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
 <div id="top"></div>
 
 <!-- PROJECT LOGO -->
@@ -77,20 +59,15 @@ With these two ideas, I worked on this project to make a program that determine 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+First, run the development server:
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
 
 <!-- USAGE EXAMPLES -->
