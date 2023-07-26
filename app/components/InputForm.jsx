@@ -1,7 +1,7 @@
 'use client'; // Client component
 
 import React, {useState, useRef, useEffect} from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 // Modules
 import nameDistance from '@/modules/nameDistance.mjs';
