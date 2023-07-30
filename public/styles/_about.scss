@@ -1,0 +1,18 @@
+.col {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+}
+
+#text-center {
+    text-align: center;
+}
+
+.center-text, h2 {
+    text-align: center;
+}
+
+#image-container {
+    max-width: 250px;
+    height: auto;
+}

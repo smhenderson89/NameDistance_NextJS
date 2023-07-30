@@ -84,6 +84,8 @@ const InputForm = () => {
 
     return (
         <div>
+            <p>What is the shortest distance between letters on a keyboard, traveling by adjacent characters?</p>
+            <p>How many steps would it take to travel between all the letters in a name? Lookup a name to find out!</p>
             <label htmlFor="input name">Enter a Name</label>
             <input type = "text" id = "inputName" onChange = {nameChange}  value = {typedName}/>
             <button type = "button" onClick={handleSubmit}>Submit</button>

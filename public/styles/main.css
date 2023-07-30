@@ -1,0 +1,40 @@
+
+/* Partials */
+.col {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+}
+
+#text-center {
+  text-align: center;
+}
+
+.center-text, h2 {
+  text-align: center;
+}
+
+#image-container {
+  max-width: 250px;
+  height: auto;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.navbar ul li {
+  flex: auto;
+  text-align: center;
+  padding: 1.6rem;
+  font-size: 18px;
+}
+.navbar ul li hover {
+  background-color: red;
+}
+
+a {
+  color: blue;
+}/*# sourceMappingURL=main.css.map */
