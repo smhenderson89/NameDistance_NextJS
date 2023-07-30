@@ -1,5 +1,8 @@
 /*# sourceMappingURL=globals.css.map */
 
+/* Partials */
+@import "about";
+
 .navbar {
     ul {
         list-style: none;
@@ -12,8 +15,12 @@
             padding: 1.6rem;
             font-size: 18px;
             hover {
-                background-color: blue;
+                background-color: red;
             }
         }
     }
+}
+
+a {
+    color : blue
 }

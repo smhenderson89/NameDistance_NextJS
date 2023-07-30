@@ -1,5 +1,5 @@
 import { Poppins } from 'next/font/google';
-import '../public/styles/globals.css';
+import '../public/styles/main.css';
 import Header from './components/Header';
 
 const poppins = Poppins({
