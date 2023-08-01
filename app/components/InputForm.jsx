@@ -1,6 +1,7 @@
 'use client'; // Client component
 
 import React, {useState, useRef, useEffect} from 'react';
+import { FcCheckmark} from 'react-icons/fc'
 // import Image from 'next/image';
 
 // Modules
@@ -88,7 +89,7 @@ const InputForm = () => {
             <p>How many steps would it take to travel between all the letters in a name? Lookup a name to find out!</p>
             <label htmlFor="input name">Enter a Name</label>
             <input type = "text" id = "inputName" onChange = {nameChange}  value = {typedName}/>
-            <button type = "button" onClick={handleSubmit}>Submit</button>
+            <button type = "button" onClick={handleSubmit}>Submit</button><FcCheckmark/>
             <br></br>
             <label htmlFor="Keyboard Layout">Choose a Keyboard</label>
             <select className = "keyboard" id = "keyboardLayout" onChange = {keyboardOption} >

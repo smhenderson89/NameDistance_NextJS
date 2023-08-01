@@ -10,8 +10,12 @@ function Results({pathData, headers, results}) {
         return (
             <div>
                 <div className='container'>
-                    <div>Name Searched: {results.name}</div>
-                    <div>Keyboard Used: {results.keyboard} </div>
+                    <div>Search Name -   
+                        <span className="results">{results.name}</span>
+                    </div>
+                    <div>Keyboard -  
+                        <span className="results">{results.keyboard}</span>
+                    </div>
                     <table className = "table table-striped">
                         <thead>
                             <tr>

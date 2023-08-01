@@ -1,0 +1,10 @@
+.results {
+    animation-duration: 5;
+    animation-name: green-highlight;
+    animation-iteration-count: infinite;
+}
+
+@keyframes green-highlight {
+    from {color: green;}
+    to {color: black;}
+}

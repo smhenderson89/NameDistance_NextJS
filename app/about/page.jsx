@@ -15,7 +15,7 @@ const AboutPage = () => {
           </div>
         </div>
         <div className='row'>
-          <div className='col'>
+          <div className='col-sm-6'>
           <Image
             src = {Hoop}
             unoptimized = {true}
@@ -23,6 +23,8 @@ const AboutPage = () => {
             height = {250}
             width = {404}>
           </Image>
+          </div>
+          <div className='col-sm-6'>
           <Image
             src = {AstarGif}
             unoptimized={true}
