@@ -1,5 +1,5 @@
 import InputForm from "./components/InputForm";
-import 'bootstrap/dist/css/bootstrap.css'; // Add this line
+import 'bootstrap/dist/css/bootstrap.css'; 
 // import styles from '../public/styles/main.scss'
 
 

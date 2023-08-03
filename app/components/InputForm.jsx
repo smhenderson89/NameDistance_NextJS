@@ -75,10 +75,9 @@ const InputForm = () => {
     useEffect(() => {
         if (submitState != '') {
         let nameObject = nameDistance(typedName, keyImage)
-        changeHeaders()
-        pathInfo(nameObject)
+        changeHeaders() // update headers
+        pathInfo(nameObject) // update able with information
         setNameInfo(nameObject); // update child component
-        // setShow(true) 
         setSubmitState(false) // prevent endless loop function
         }
     }, [submitState, nameInfo, typedName, keyImage])
@@ -89,7 +88,7 @@ const InputForm = () => {
             <p>How many steps would it take to travel between all the letters in a name? Lookup a name to find out!</p>
             <label htmlFor="input name">Enter a Name</label>
             <input type = "text" id = "inputName" onChange = {nameChange}  value = {typedName}/>
-            <button type = "button" onClick={handleSubmit}>Submit</button><FcCheckmark/>
+            <button type = "button" onClick={handleSubmit}>Submit</button>
             <br></br>
             <label htmlFor="Keyboard Layout">Choose a Keyboard</label>
             <select className = "keyboard" id = "keyboardLayout" onChange = {keyboardOption} >
