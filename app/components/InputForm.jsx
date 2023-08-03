@@ -1,6 +1,7 @@
 'use client'; // Client component
 
 import React, {useState, useRef, useEffect} from 'react';
+import { FcCheckmark} from 'react-icons/fc'
 // import Image from 'next/image';
 
 // Modules
@@ -74,10 +75,9 @@ const InputForm = () => {
     useEffect(() => {
         if (submitState != '') {
         let nameObject = nameDistance(typedName, keyImage)
-        changeHeaders()
-        pathInfo(nameObject)
+        changeHeaders() // update headers
+        pathInfo(nameObject) // update able with information
         setNameInfo(nameObject); // update child component
-        // setShow(true) 
         setSubmitState(false) // prevent endless loop function
         }
     }, [submitState, nameInfo, typedName, keyImage])
