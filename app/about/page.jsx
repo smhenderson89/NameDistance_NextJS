@@ -51,7 +51,16 @@ const AboutPage = () => {
         </div>
         <p>But what about more complicated names like &quot;SCOTT&quot; or &quot;WASHINGTON&quot;? How could you determine the shortest path between the letters? How would you know where to go?</p>
         <p>With these two ideas, I worked on this project to make a program that determine the shortest path between letters for any name and sum up the &quot;distance&quot; score for each name. What is the shortest path for each name depending on the name length?</p>
+        <h3 className='text-center'>Technologies Used</h3>
+        <div>
+          <li><a href="https://en.wikipedia.org/wiki/A*_search_algorithm">A* &quot;A star&quot; aglorithm</a></li>
+          <li><a href="https://nextjs.org/">NextJS</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">ES6 Modules</a></li>
+          <li><a href="https://sass-lang.com/">SASS</a></li>
+          <li><a href="https://getbootstrap.com/">Bootstrap</a></li>
+        </div>
     </div>
+    
   )
 }
 

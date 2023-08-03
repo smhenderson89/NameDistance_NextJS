@@ -24,6 +24,7 @@ const InputForm = () => {
     const keyboardOption = (event) => {
         let keyboardSelect = event.target.value;
         setKeyImage(keyboardSelect); // update keyboard Image
+        setSubmitState(true) // run A* based on inputed keyboard
     }
 
     // Update Type named based on when name is entered into the field
