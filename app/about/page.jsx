@@ -5,6 +5,7 @@ import AstarGif from '../../public/images/a-star-gif.gif'
 import Hoop from '../../public/images/robotic_basketball_hoop.gif'
 
 const AboutPage = () => {
+
   return (
     <div>
         <h2>About Page</h2>

@@ -1,5 +1,6 @@
 import InputForm from "./components/InputForm";
 import 'bootstrap/dist/css/bootstrap.css'; 
+import 'react-toastify/dist/ReactToastify.css'
 // import styles from '../public/styles/main.scss'
 
 
