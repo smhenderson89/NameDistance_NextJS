@@ -55,9 +55,6 @@ function nameDistance (name, keyboard) {
     }
     distanceObject.push({"totalDistance" : totalDistance})
 
-    // console.log(`Keyboard: ${keyboard}, JSON Object for ${name} is: `)
-    // console.log('Name distance hit');
-    // console.log(distanceObject)
     return distanceObject // return object to express route
     }
 }
