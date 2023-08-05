@@ -15,7 +15,7 @@ export function Astar(start, end, board) {
 
     // verify start & end are letters
     if (typeof start == 'string' && typeof end == 'string') {
-        // console.log('start & end are letters')
+
     } else if (start == null && end == null) {
         return [0, []]
     } else {
@@ -25,21 +25,16 @@ export function Astar(start, end, board) {
     // Change constants depending on keyboard
     switch (keyboard) { 
         case "qwerty": // If keyboard = "qwerty", then use ortho variables
-            // console.log("qwerty variables");
             break;
         case "ortho": // If keyboard = "ortho", then use qwerty variables
-            // console.log("ortho varaibles")
             break;
         case "dvorak": // If keyboard = dvorak, then use dvorak variables (Not yet completed)
-            // console.log("dvorak variables");
             break;
         case "" : // If keyboard is empty, then return keyboard not specified
-            // console.log("no keyboard specified");
             break;
         }
 
     // Run A* aglorithm
-    // console.log('Running A Star')
 
     // INTIALIZE NODES
     let letterNodes = {} // intialize empty object
@@ -56,7 +51,6 @@ export function Astar(start, end, board) {
     var distance = 0; // distance traveled between letters
     let letterPath = []; // Path from start to end Letter
     if (startLetter === endLetter) { // if Start & End same letter, then already found it
-        // console.log('Start == End Letter, next letter')
         return [distance, letterPath]
     } else {
         var openList = [] // nodes to be evaluated
@@ -64,7 +58,6 @@ export function Astar(start, end, board) {
         var lettersToEval = [] // letters of adjacent nodes to evaluated
         var startNode = letterNodes[startLetter]
         var currentNode = {}
-        // console.log('Path from', startLetter, 'to', endLetter)
 
         // DEBUG: Prevent Infinte loops
         var whileLoops = 0;
@@ -72,7 +65,7 @@ export function Astar(start, end, board) {
         //push startNode onto openList
         openList.push(startNode)
 
-        while (openList.length > 0 && whileLoops != 15) { // while end point has not been found, or loops exceed 15 to prevent infinite loops
+        while (openList.length > 0 && whileLoops != 20) { // while end point has not been found, or loops exceed 20 to prevent infinite loops
             //currentNode = find lowest f in openList, OR the End location!
             //Grab lowest f(x) to process next
             let lowestIndex = 0
@@ -84,21 +77,17 @@ export function Astar(start, end, board) {
                     letterPath[k] = closedList[k].letter;
                 }
                 letterPath.push(endLetter);
-                // console.log(letterPath);
-                let distance = (letterPath.length - 1);
-                // console.log(`Length of travel: ${distance}`) ; // Distance between lengths
+                let distance = (letterPath.length - 1); // Adjust for distnace
 
-                // console.log(`${distance}, ${letterPath}`);
                 return [distance, letterPath] // Return information to Name Distance
-            } else { // Continue with aglorithim
+            } else { // Continue with aglorithim to find path to letter
                 if (openList.length > 1) {
                     for (let i = 0; i < openList.length; i++) {
                         if (openList[i].f < openList[lowestIndex].f) { // if found lowest index
                             lowestIndex = i
                         }
                     }
-                    // console.log('Letter', openList[lowestIndex].letter, ' is lowest')
-                    currentNode = openList[lowestIndex]
+                    currentNode = openList[lowestIndex] 
 
                 } else if (openList.length == 1) { // If only one value on openList
                     var currentNode = openList[0]
@@ -142,7 +131,6 @@ export function Astar(start, end, board) {
                 lettersToEval.push(openList[i].letter)
             }
 
-            // console.log(`DEBUG: lettersToEval : ${lettersToEval}`);
 
             // Evalute for lowest f cost for next value at start of the loop
             // save parent Node for next loop
@@ -151,7 +139,7 @@ export function Astar(start, end, board) {
             whileLoops++
         }
 
-        // DEBUG: If Astar exceeds 15 repetitions, then output last known spot
+        // DEBUG: If Astar exceeds 15 repetitions, something has gone wrong then output last known spot
         console.log(`Times through Astar algo: ${whileLoops}`);
         console.log(`Closed List: ${closedList}`);
         console.log(``)
