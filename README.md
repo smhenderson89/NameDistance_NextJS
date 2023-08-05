@@ -46,11 +46,11 @@ With these two ideas, I worked on this project to make a program that determine 
 
 ### Built With
 
-## Front End 
-
+*  A*, a path-finding [algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm)
 * [React.js](https://reactjs.org/)
 * [SASS](https://sass-lang.com/)
 * [Bootstrap](https://getbootstrap.com/)
+* [ES6 Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
