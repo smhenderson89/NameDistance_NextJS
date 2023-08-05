@@ -1,8 +1,7 @@
 'use client'; // Client component
 
-import React, {useState, useRef, useEffect} from 'react';
-import { FcCheckmark} from 'react-icons/fc'
-// import Image from 'next/image';
+// React
+import React, {useState, useEffect} from 'react';
 
 // Modules
 import nameDistance from '@/modules/nameDistance.mjs';
@@ -10,6 +9,8 @@ import nameDistance from '@/modules/nameDistance.mjs';
 // Child Components
 import Results from './Results';
 import KeyImage from './KeyImage';
+import ToastNotifications from './ToastNotifications';
+import * as reactToastify from 'react-toastify'
 
 const InputForm = () => {
     const [typedName, setTypedName] = useState('') // Update inputName
@@ -24,12 +25,14 @@ const InputForm = () => {
     const keyboardOption = (event) => {
         let keyboardSelect = event.target.value;
         setKeyImage(keyboardSelect); // update keyboard Image
+        setSubmitState(true) // run A* based on inputed keyboard
     }
 
     // Update Type named based on when name is entered into the field
     const nameChange = event => {
         let partialName = event.target.value;
         setTypedName(partialName)
+        setSubmitState(false)
     }
     
     // Update state when form is submitted
@@ -45,7 +48,6 @@ const InputForm = () => {
         const headersList = headers.map((item, index) => {
             return <th scope = "col" key = {index}>{item}</th>
         })
-
         setHeaders(headersList)
     }
 
@@ -68,22 +70,35 @@ const InputForm = () => {
             <td>{item['distance']}</td>
         </tr>)
         setPathData(pathData)
-
     }
 
     /* UseEffect -> Run program request once forum is submitted, pass information to Results component*/
     useEffect(() => {
         if (submitState != '') {
         let nameObject = nameDistance(typedName, keyImage)
-        changeHeaders() // update headers
-        pathInfo(nameObject) // update able with information
-        setNameInfo(nameObject); // update child component
-        setSubmitState(false) // prevent endless loop function
-        }
+        if (!nameObject) { // Logic if bad name is submitted
+            reactToastify.toast.error('Name must be ≥ 2 letters', {
+                position: reactToastify.toast.POSITION.TOP_CENTER,
+                autoClose: 3000,
+                limit: 2
+            })
+        } else {
+            reactToastify.toast.success('Results Updated', {
+                position: reactToastify.toast.POSITION.TOP_CENTER,
+                autoClose: 3000,
+                limit: 2
+
+            })
+            changeHeaders() // update headers
+            pathInfo(nameObject) // update table with information
+            setNameInfo(nameObject); // update child component
+            setSubmitState(false) // prevent endless loop function
+        }}
     }, [submitState, nameInfo, typedName, keyImage])
 
     return (
         <div>
+
             <p>What is the shortest distance between letters on a keyboard, traveling by adjacent characters?</p>
             <p>How many steps would it take to travel between all the letters in a name? Lookup a name to find out!</p>
             <label htmlFor="input name">Enter a Name</label>
@@ -101,12 +116,13 @@ const InputForm = () => {
             <KeyImage image = {keyImage} />
             <br></br>
             <br></br>
-            {/* Pass NameDsitance information to Results Componet */} 
+            {/* Pass NameDsitance information to Results Component */} 
             <Results 
                 pathData = {pathData}
                 headers = {headers}
                 results = {resultInfo} 
-                /> 
+                />
+            <ToastNotifications  />
         </div>
     )
 }

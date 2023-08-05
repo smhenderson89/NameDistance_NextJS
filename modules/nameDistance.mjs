@@ -13,6 +13,10 @@ import { sliceName } from './sliceName.mjs';
 
 function nameDistance (name, keyboard) {
     let nameArray = sliceName(name)
+    if (!nameArray) {
+        // console.log('not valid submitted name')
+        return false
+    } else {
     let totalDistance = 0;
     let distanceArray = []
     let distanceObject = [{"name" : name}, {"keyboard" : keyboard}]
@@ -55,6 +59,7 @@ function nameDistance (name, keyboard) {
     // console.log('Name distance hit');
     // console.log(distanceObject)
     return distanceObject // return object to express route
+    }
 }
 
 // Test: nameDistance('supercalifragilisticexpialidocious', 'dvorak')
