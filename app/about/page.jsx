@@ -36,7 +36,7 @@ const AboutPage = () => {
         </div>
         <div>Source : Wikipedia ( <a href = "https://creativecommons.org/licenses/by-sa/3.0/">License</a> ) </div>
         <br></br>
-        <p>After watching a video from <a href ="https://www.youtube.com/watch?v=FycDx69px8U&ab_channel=StuffMadeHere">Stuff Made Here</a> using graph theory to build a basketball hoop where the shot always lands in, I was curious to learn more how to incorporate graphy theory into my own project.</p>
+        <p>After watching a video from <a href ="https://www.youtube.com/watch?v=FycDx69px8U&ab_channel=StuffMadeHere">Stuff Made Here</a> using graph theory to build a basketball hoop where the shot always lands in, I was curious to learn more how to incorporate graph theory into my own project.</p>
         <p>Seperately, I noticed that in some names on a keyboard, all the letters are adjacent to each other.</p> 
         <p>&quot;DREW&quot; can be spelled &quot;D&quot; -&gt; &quot;R&quot; -&gt; &quot;E&quot; -&gt; &quot;W&quot;, moving between letters adjacent to their corners.</p>
         <div className='row'>

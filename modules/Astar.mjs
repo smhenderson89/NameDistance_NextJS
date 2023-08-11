@@ -80,7 +80,7 @@ export function Astar(start, end, board) {
                 let distance = (letterPath.length - 1); // Adjust for distnace
 
                 return [distance, letterPath] // Return information to Name Distance
-            } else { // Continue with aglorithim to find path to letter
+            } else { // Continue with algorithm to find path to letter
                 if (openList.length > 1) {
                     for (let i = 0; i < openList.length; i++) {
                         if (openList[i].f < openList[lowestIndex].f) { // if found lowest index
